@@ -1,0 +1,23 @@
+DFT_N : 采样点数
+DFT_WN_REAL:  cos(2pi/N)
+DFT_WN_IMAGE:  sin(2pi/N)
+
+fReal: 临时变量，先记录【A模型】的 M[n-1]+Vpe[n]，再记录【B模型】的M[n-1]+Vpe[n]-Vpe[n-N]
+
+s_uiIndex:
+
+s_fVpe[DFT_N]: s_fVpe[s_uiIndex]对应Vpe[n-N];主要用于存储N个点以前的周期序列
+
+s_f50HzRealNew: 【A模型】对应M[n-1]实部
+s_f50HzImageNew:【A模型】对应M[n-1]虚部
+
+g_VarLocal.fVpe : 最新采样数据
+g_VarLocal.f50HzReal:【B模型】对应的M[n]实部
+g_VarLocal.f50HzImage:【B模型】对应的M[n]实部
+
+【A模型】每次清零
+【B模型】每次不清零
+
+p.s. 截图中间缺省代码：
+	s_uiIndex++;
+	if(s_uiIndex == DFT_N){
